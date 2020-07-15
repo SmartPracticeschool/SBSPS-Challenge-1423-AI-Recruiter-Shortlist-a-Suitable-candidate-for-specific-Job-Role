@@ -1,0 +1,128 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Applicant Info</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
+    <!-- Favicons -->
+    <link href="{% static 'img/1.png' %}" rel="icon">
+    <link href="{% static 'img/1.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS File -->
+    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/43528f0353.js"></script>
+</head>
+<body>
+
+    <div class="unit-5 overlay" style="image-resolution: 800;
+        background-color: #2b3032a1;
+        background-blend-mode: multiply;
+        background-size: cover;
+        background-image: url('{% static '/images/form-back1.jpg'%}');
+    ">
+        <div class="container text-center">
+            <h2 style="color:white; text-shadow:1px 1px black" class="mb-0">Applicants Information</h2>
+            <p class="mb-0 unit-6"><a style="color:white;" href="/home">Home</a> <span style="color:black;" class="sep">></span> <span style="color:white;">Applicants Information</span></p>
+        </div>
+
+
+    </div>
+    
+    {% for i in  object%}
+    <div style="margin-left:20px; margin-top:20px;" class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 style="font-weight:500; font-size: 25px; text-shadow: 1px 1px black;" class="card-title">{{i.FirstName}}  {{i.LastName}}</h5>
+            <h6 style="font-weight:500; font-size: 15px;" class="card-subtitle mb-2 text-muted">{{i.email}} <hr /></h6>
+            <h6 style="font-weight:500; font-size: 15px; text-align:justify;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Educations :</span>  {{i.education}}</h6>
+            <h6 style="font-weight:500; font-size: 15px; text-align:justify;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Skills :</span>  {{i.skill}}</h6>
+            <a href="dashboard" class="card-link">Go To Dashboard</a>
+            <a href="Dashboard" class="card-link">Sent Invitation</a>
+        </div>
+    </div>
+    {% endfor %}
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+
+            </div>
+        </div>
+
+
+
+        <div class="py-5 quick-contact-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <h2><span class="icon-room"></span> Location</h2>
+                            <p class="mb-0">S.S.A.I.E.T, Viranjali Marg, Gandevi Road, Navsari-396445</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <h2><span class="icon-clock-o"></span> Service Times</h2>
+                            <p>
+                                We Are Here 24/7/365 For You.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h2><span class="icon-comments"></span> Get In Touch</h2>
+                        <p class="mb-0">
+                            Email: 2bherwani@gmail.com <br>
+                            Phone: +91-7874279397
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="container">
+
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong>Molly</strong>. All Rights Reserved
+                </div>
+            </div>
+        </footer><!-- #footer -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+        <script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+        <script src="{% static 'lib/wow/wow.min.js' %}"></script>
+        <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+        <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+        <script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+        <script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+
+        <!-- Contact Form JavaScript File -->
+        <script src="{% static 'contactform.js' %}"></script>
+
+        <script src="{% static 'js/home.js' %}"></script>
+
+
+
+</body>
+
+</html>
