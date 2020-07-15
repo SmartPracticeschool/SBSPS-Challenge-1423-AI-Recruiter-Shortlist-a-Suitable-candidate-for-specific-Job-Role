@@ -74,16 +74,16 @@ Clone or download the repository:
 
 ## Go to the molly directory:
 ```shell
-# open the repoository
+# open the repository
 cd molly
-# You can also open this repository in Visual Studio.
+#open this molly file in terminal
 ```
 
 ## To create table in database:
 ```shell
 python manage.py makemigrations
 python manage.py migrate
-#If you have opened the repository in Visual Studio then, execute the above code in terminal.
+
 ```
 
 ## Starting the server:
