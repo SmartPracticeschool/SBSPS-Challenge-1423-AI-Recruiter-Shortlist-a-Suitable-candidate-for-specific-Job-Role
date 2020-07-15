@@ -1,7 +1,7 @@
 <p align="center">
   <img src="./assests/images/logo.png" width="200" alt="Logo">
 
-  <h3 align="center">M.O.L.L.Y.</h3>
+  
   <p align="center">
     We are team of developers making your hiring process easy.
     Let AI handle it for you.
