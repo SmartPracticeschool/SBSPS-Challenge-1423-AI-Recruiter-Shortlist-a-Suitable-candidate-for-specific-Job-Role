@@ -31,14 +31,14 @@ This document describes how to set up your development environment to run and te
 
 Before you can run and test MOLLY, you must install and configure the
 following products on your development machine:
-* [Visual Studio](https://visualstudio.microsoft.com/) 
+ 
 * [Python](https://www.python.org/) 
 * [Xampp](https://www.apachefriends.org/index.html)
 * [django](https://www.djangoproject.com/)
 ```shell
 # Install django through commond line.
 pip install django
-# You can also open this repository in Visual Studio.
+
 ```
 * [Pandas](https://pandas.pydata.org/)
 ```shell
