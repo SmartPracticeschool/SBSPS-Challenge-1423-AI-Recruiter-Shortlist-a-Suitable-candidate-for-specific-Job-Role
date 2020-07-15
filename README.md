@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./public/images/logo/logo.png" width="200" alt="Logo">
+  <img src="./assests/logo.png" width="200" alt="Logo">
 
   <h3 align="center">M.O.L.L.Y.</h3>
   <p align="center">
@@ -94,8 +94,8 @@ python manage.py runserver
 
 ## Goto home page 
 ```shell
-#Goto home page on open it
-cd molly\templates\index.html
+#Goto home page to open it
+http://127.0.0.1:8000/home
 #ENJOY!
 ```
 
