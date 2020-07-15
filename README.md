@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assests/logo.png" width="200" alt="Logo">
+  <img src="./assests/images/logo.png" width="200" alt="Logo">
 
   <h3 align="center">M.O.L.L.Y.</h3>
   <p align="center">
