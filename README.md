@@ -17,12 +17,14 @@
 </p>
 
 # Video of working model:
-```shell
-# Google drive link.
-https://drive.google.com/file/d/1ADkJcDWY4qxVoNouJTNgzqsNQd2Q2L5p/view?usp=sharing
-# If you have any issues with the google drive link you can also visit the video on youtube.
-https://youtu.be/UkCWcOmISpY
-```
+
+Google drive link.
+
+* [Google drive link](https://drive.google.com/file/d/1ADkJcDWY4qxVoNouJTNgzqsNQd2Q2L5p/view?usp=sharing) 
+
+If you have any issues with the google drive link you can also visit the video on youtube.
+
+* [Youtube Link](https://youtu.be/UkCWcOmISpY)
 
 
 # Setting up and running the app on your machine:
