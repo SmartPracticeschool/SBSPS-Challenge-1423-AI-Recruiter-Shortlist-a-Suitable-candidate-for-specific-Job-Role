@@ -16,7 +16,7 @@
   </p>
 </p>
 
-# Setting up and running the app on your machine
+# Setting up and running the app on your machine:
 
 This document describes how to set up your development environment to run and test MOLLY.
 
