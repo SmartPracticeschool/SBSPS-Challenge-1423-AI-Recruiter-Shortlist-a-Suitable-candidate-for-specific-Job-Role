@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.conf.urls import url
 
 urlpatterns = [
     path('signup',views.SignUp), 
@@ -10,6 +11,7 @@ urlpatterns = [
     path('trydemo',views.demo),
     path('viewdone',views.candidate),
     path('categories',views.category),
-    path('dashboard',views.dashboard),
-    path('Dashboard',views.email)
+    # path('Dashboard',views.dashboard),
+    url(r'(?P<Resume_ID>\d+)/$',views.dashboard,name ='Dashboard'),
+    url(r'(?P<name>\D+)/$',views.sentinvite,name ='invitation')
 ]

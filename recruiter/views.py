@@ -6,15 +6,16 @@ from django.contrib.auth.models import User,auth
 from cloudant.client import Cloudant
 from cloudant.error import CloudantException
 from cloudant.result import Result, ResultByKey
+from cloudant.query import Query
+from django.http import HttpResponse
 import pandas as pd
 import smtplib
 import os
 from email.message import EmailMessage
-
-# This are environment variable of my mail_ID to keep you out of reach of my password
-# Security hahahah
 user_id = os.environ.get("MAIL_ID")
 password = os.environ.get('MAIL_PASS')
+# Create your views here.
+
 def home(request):
     return render(request,'home.html')
 
@@ -51,6 +52,15 @@ def candidate(request):
     obj=UserResumes.objects.all()
     content={"object":obj}
     return render(request,'candidate.html',content)
+
+
+def sentinvite(request,name):
+    obj = UserResumes.objects.get(Name=name)
+    invitation_mail(user_id,password,obj.email,obj.Name)
+    return  redirect('/viewdone')
+
+   
+    
 
 def category(request):
     obj=JobInsert.objects.all()
@@ -108,20 +118,17 @@ def logout(request):
     return redirect("/home")
 
 
-def dashboard(request):
+def dashboard(request,Resume_ID):
+    obj = UserResumes.objects.get(Resume_ID=Resume_ID)
     client = Cloudant.iam("7bb49e3e-e0c1-483c-ab22-f4e9df6c48e8-bluemix", "28sTEYEUQKZrioimA4m6UyRuddlySON3JpDZT_gCwFIK")
     client.connect()
-
+    print(obj.email)
     database_name = "all_data"
-    my_database = client.create_database(database_name)
+    db = client.create_database(database_name)
+    query = Query(db, selector={ '_id': obj.email })
+    result = query()['docs']
+    d=pd.DataFrame(result[0])
 
-
-
-    result_collection = Result(my_database.all_docs, include_docs=True)
-    
-    h=result_collection[0]
-    df=pd.DataFrame(h)
-    d=pd.DataFrame(df['doc'][0])
     per=d.loc['personality','per']
     openness = (per[0]['raw_score']*100)
     conscientiousness= per[1]['raw_score']*100
@@ -177,26 +184,22 @@ def dashboard(request):
 
     }
     return  render(request,'dashboard.html',conten)
+    
 
-def email(request):
-    invitation_mail(user_id, password,'ayushsaxena439@gmail.com','Denish','APPLE','JS')
-    return redirect('/viewdone')
-
-def invitation_mail(user_id, password, candidate_ID, sender_name, company_name, job_title):
+def invitation_mail(user_id, password, candidate_ID, candidate_name):
     msg=EmailMessage()
     msg['Subject'] = 'Invitation for the main Job Interview'
     msg['To'] = candidate_ID
     msg['From'] = user_id
     msg.set_content("""
-    Hi """+ sender_name+""",
+    Hi """+ candidate_name+""",
     
-    Your application for the """+job_title+""" position stood out to us and we would like to invite you for an interview at our office[s] to get to know you a  better.
-     you’ll have the chance to discuss for the """+job_title+""" position and learn more about our company.
+    Your application for the position stood out to us and we would like to invite you for an interview at our officeto get to know you a bit better.
+     The interview will last about 120 minutes and you’ll have the chance to discuss the  position and learn more about our company.
     Please note that the security guard will ask to see your ID to let you enter the building.
 
-    """+company_name)
-
-
+    """)
+   
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(user_id, password)
         smtp.send_message(msg)

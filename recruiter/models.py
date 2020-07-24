@@ -19,25 +19,6 @@ class document(models.Model):
     document = models.FileField()
     uploaded_at = models.DateTimeField(auto_now_add=True)
     
-class UserResumes(models.Model):
-    Resume_ID = models.AutoField(primary_key=True)
-    FirstName = models.CharField(max_length=100,default="")
-    LastName = models.CharField(max_length=100,default="")
-    pinfo = models.CharField(max_length=1000,default="")
-    cgpa = models.CharField(max_length=50,default="")
-    mobile=models.CharField(max_length=11,default="")
-    email=models.CharField(max_length=50,default="")
-    objective = models.CharField(max_length=1000,default="")
-    education = models.TextField(max_length=5000,default="")
-    skill = models.TextField(max_length=5000,default="")
-    achievements = models.CharField(max_length=3000,default="")
-    projects = models.TextField(max_length=5000,default="")
-    hobbies = models.CharField(max_length=1000,default="")
-    class Meta:
-        db_table ="resumeparser"
-        print("done")
-
-
 
 class CompanyInsert(models.Model):
     first_name = models.CharField(max_length=50,default="")
@@ -58,9 +39,9 @@ class JobInsert(models.Model):
     company_name = models.CharField(max_length=100,default="")
     job_type = models.CharField(max_length=50,default="")
     location = models.CharField(max_length=100,default="")
-    job_description = models.TextField(max_length=1000,default="")
-    qualifications = models.TextField(max_length=1000,default="")
-    additional_info = models.TextField(max_length=2000,default="")
+    job_description = models.TextField(max_length=100,default="")
+    qualifications = models.TextField(max_length=100,default="")
+    additional_info = models.TextField(max_length=200,default="")
     class Meta:
         db_table ="recruiter_jobinsert"
         print("done")
@@ -73,3 +54,24 @@ class demo(models.Model):
     class Meta:
        db_table ="recruiter_demo"
        print("done")
+
+
+class UserResumes(models.Model):
+    Resume_ID = models.AutoField(primary_key=True)
+    Name = models.CharField(max_length=100,default="")
+    mobile=models.CharField(max_length=11,default="")
+    email=models.CharField(max_length=50,default="")
+    skills = models.CharField(max_length=500,default="")
+    company=models.CharField(max_length=500,null=True, blank = True)
+    experience=models.TextField(max_length=1000,null=True, blank = True)
+    experience_in_year=models.CharField(max_length=5,null=True, blank = True)
+    designation=models.TextField(max_length=500,null=True, blank = True)
+    college_name=models.CharField(max_length=500,null=True, blank = True)
+    class Meta:
+        db_table ="resumeparser"
+        print("done")
+
+
+
+
+

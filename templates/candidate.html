@@ -40,18 +40,17 @@
 
     </div>
     
-    {% for i in  object%}
+    {% for i in  object %}
     <div style="margin-left:20px; margin-top:20px;" class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 style="font-weight:500; font-size: 25px; text-shadow: 1px 1px black;" class="card-title">{{i.FirstName}}  {{i.LastName}}</h5>
+            <h5 style="font-weight:500; font-size: 25px; text-shadow: 1px 1px black;" class="card-title">{{i.Name}}  </h5>
             <h6 style="font-weight:500; font-size: 15px;" class="card-subtitle mb-2 text-muted">{{i.email}} <hr /></h6>
-            <h6 style="font-weight:500; font-size: 15px; text-align:justify;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Educations :</span>  {{i.education}}</h6>
-            <h6 style="font-weight:500; font-size: 15px; text-align:justify;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Skills :</span>  {{i.skill}}</h6>
-            <a href="dashboard" class="card-link">Go To Dashboard</a>
-            <a href="Dashboard" class="card-link">Sent Invitation</a>
+            <h6 style="font-weight:500; font-size: 15px; text-align:justify;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Skills :</span>  {{i.skills}}</h6>
+            <a href="{% url 'Dashboard' Resume_ID=i.Resume_ID %}" class="card-link">Go To Dashboard</a>
+            <a href="{% url 'invitation' name=i.Name%}" class="card-link">Sent Invitation</a>
         </div>
     </div>
-    {% endfor %}
+    {% endfor %}    
     <footer id="footer">
         <div class="footer-top">
             <div class="container">

@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'molly.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'molly_info',
+        'NAME': 'molly',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
