@@ -40,7 +40,8 @@ def Insertrecord(request):
         designation=data['designation']
         college_name=data['college_name']
         skills=data['skills']
-        user=UserResumes(Name=Name,email=email,mobile=mobile,company=company,experience=experience,experience_in_year=experience_in_year,designation=designation,college_name=college_name,skills=skills)
+        ref=random.randint(0,22233)
+        user=UserResumes(Name=Name,email=email,mobile=mobile,company=company,experience=experience,experience_in_year=experience_in_year,designation=designation,college_name=college_name,skills=skills,reference=ref)
         user.save()
         
         
