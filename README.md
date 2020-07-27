@@ -9,7 +9,7 @@
     <br/>
     We provide Instant and automated workflow.
     Our users spend around 50% less time screening candidates.
-    And provide 24/7 services.
+    And provide 24/7 services
     <br />
     <br />
 
