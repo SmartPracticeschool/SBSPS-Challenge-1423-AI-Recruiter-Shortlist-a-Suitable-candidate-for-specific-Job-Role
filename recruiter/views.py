@@ -108,7 +108,8 @@ def companyinsert(request):
                 data.save()
                 user = User.objects.create_user(username=companyname,password=password1,email=email,first_name=firstname,last_name=lastname)
                 user.save()
-                return render(request,'signin.html')
+                messages.success(request,'User Registration Successful.')
+                return redirect('/signup')
         else:
             messages.info(request,"Password Doesn't match!!!")
             return redirect('/signup')
