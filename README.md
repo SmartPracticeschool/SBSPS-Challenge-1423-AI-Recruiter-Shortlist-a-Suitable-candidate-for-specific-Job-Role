@@ -64,10 +64,10 @@ pip install mysqlclient
 # Install cloudant through commond line.
 pip install cloudant
 ```
-* [PyPDF2](https://pythonhosted.org/PyPDF2/)
+* [pyresparser](https://pypi.org/project/pyresparser/)
 ```shell
-# Install PyPDF2 through commond line.
-pip install PyPDF2
+# Install pyresparser through commond line.
+pip install pyresparser
 ```
 
 ## Setting up the Sources:
@@ -78,7 +78,7 @@ Clone or download the repository:
    [here](https://github.com/signup/free).
 2. Download the repoository from [here](https://github.com/SmartPracticeschool/SBSPS-Challenge-1423-AI-Recruiter-Shortlist-a-Suitable-candidate-for-specific-Job-Role)
 3. Open xampp-control.exe from your Xampp. And click on start button of MySql and Apache. After click on admin button. 
-4. Create Database on phpMyAdmin with name as 'molly_info'.
+4. Create Database on phpMyAdmin with name as 'molly'.
 
 
 ## Go to the molly directory:
