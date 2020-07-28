@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert
+from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert, jobs
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from cloudant.client import Cloudant
@@ -17,9 +17,11 @@ password = os.environ.get('MAIL_PASS')
 # Create your views here.
 
 def home(request):
+   
     return render(request,'home.html')
 
 def postjob(request):
+     all_jobs = jobs.objects.all()
      if request.method=='POST' and 'postjob' in request.POST:
         job_title=request.POST["job_title"]
         company_name=request.POST["company_name"]
@@ -32,7 +34,7 @@ def postjob(request):
         data.save()
         return redirect("/postjob")
      else:
-        return render(request,'form.html')
+        return render(request,'form.html',{'joblist' : all_jobs})
 
 def demo(request):
      if request.method=='POST' and 'demo' in request.POST:
