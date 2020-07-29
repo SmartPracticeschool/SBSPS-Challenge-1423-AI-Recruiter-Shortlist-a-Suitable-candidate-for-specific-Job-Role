@@ -6,8 +6,8 @@ from django.http import HttpResponse
 from recruiter.models import UserInsert, UserResumes
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-import random
 
+import random
 from pyresparser import ResumeParser
 
     
@@ -21,7 +21,6 @@ def Insertrecord(request):
         Last=request.POST["LastName"]
         Email=request.POST["Email"]
         Ph_no=request.POST["PhoneNumber"]
-        # skills = request.POST["skills"]
         add=request.POST["Address"]
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
@@ -40,13 +39,45 @@ def Insertrecord(request):
         designation=data['designation']
         college_name=data['college_name']
         skills=data['skills']
-        ref=random.randint(0,22233)
-        user=UserResumes(Name=Name,email=email,mobile=mobile,company=company,experience=experience,experience_in_year=experience_in_year,designation=designation,college_name=college_name,skills=skills)
+        degree=data['degree']
+        user=UserResumes(Name=Name,email=email,mobile=mobile,company=company,experience=experience,experience_in_year=experience_in_year,designation=designation,college_name=college_name,skills=skills,degree=degree)
         user.save()
         
+        r=random.choice([1, 2, 3, 4])
+       
+      
+        content= dict( 
+                content1={
+                    'question1':"hello1",
+                    'question2':"hello2",
+                    'question3':"hello3",
+                    'question4':"hello4",
+                    'question5':"hello5"
+                },
+                content2={
+                    'question1':"hello2",
+                    'question2':"hello2",
+                    'question3':"hello3",
+                    'question4':"hello4",
+                    'question5':"hello5"
+                },
+                content3={
+                    'question1':"hello3",
+                    'question2':"hello2",
+                    'question3':"hello3",
+                    'question4':"hello4",
+                    'question5':"hello5"
+                },
+                content4={
+                    'question1':"hello4",
+                    'question2':"hello2",
+                    'question3':"hello3",
+                    'question4':"hello4",
+                    'question5':"hello5"
+                
+                })
+        quest="content"+str(r)
+
         
-
-        return render(request,'node.html')
-
-
-
+        return render(request,'formpage.html',content[quest])
+    

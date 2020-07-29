@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Interview questions Form</title>
+
+    <!-- Latest compiled and minified CSS -- 
+    <link rel="stylesheet" href='{% static "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %}'> -->
+    <!-- Optional theme --
+    <link rel="stylesheet" href='{% static "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" %}'>
+    <script src='{% static "https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" %}'></script> -->
+    <link rel="stylesheet" href='{% static "css/form.css" %}'>
+    <script src='{% static "js/form.js" %}' ></script>
+</head>
+<!-- <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Your Message Here" maxlength="6000" rows="7"></textarea> -->
+<style>
+    body {
+        background-image: url({% static "img/hero-bg.jpg" %});
+        background-repeat: no-repeat;
+        background-position: right top;
+        background-attachment: fixed;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>Interview Questions</h2>
+                <p> Please answer all the Questions. </p>
+                <br>
+                <form role="form" method="post" action="personality" enctype="multipart/form-data">
+
+                    {% csrf_token %}
+                     <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label for="name"> Question 1 : {{question1}} </label>
+                            <textarea class="form-control" type="textarea" id="q1" name="q1" placeholder="Ans1 comes here" maxlength="5000"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label for="name"> Question 2 : {{question2}} </label>
+                            <textarea class="form-control" type="textarea" id="q2" name="q2" placeholder="Ans2 comes here" maxlength="5000"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label for="name"> Question 3 :{{question3}} </label>
+                            <textarea class="form-control" type="textarea" id="q3" name="q3" placeholder="Ans3 comes here" maxlength="5000"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label for="name"> Question 4 : {{question4}} </label>
+                            <textarea class="form-control" type="textarea" id="q4" name="q4" placeholder="Ans4 comes here" maxlength="5000"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label for="name"> Question 5 : {{question5}} </label>
+                            <textarea class="form-control" type="textarea" id="q5" name="q5" placeholder="Ans5 comes here" maxlength="5000"></textarea>
+                        </div>
+                    </div>
+               
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">Post It! </button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

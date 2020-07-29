@@ -11,7 +11,9 @@ urlpatterns = [
     path('trydemo',views.demo),
     path('viewdone',views.candidate),
     path('categories',views.category),
-    # path('Dashboard',views.dashboard),
+    path('personality',views.personality),
+    
+    
     url(r'(?P<Resume_ID>\d+)/$',views.dashboard,name ='Dashboard'),
     url(r'(?P<name>\D+)/$',views.sentinvite,name ='invitation')
 ]

@@ -68,6 +68,7 @@ class UserResumes(models.Model):
     mobile=models.CharField(max_length=11,default="")
     email=models.CharField(max_length=50,default="")
     skills = models.CharField(max_length=500,default="")
+    degree=models.CharField(max_length=500,null=True, blank = True)
     company=models.CharField(max_length=500,null=True, blank = True)
     experience=models.TextField(max_length=1000,null=True, blank = True)
     experience_in_year=models.CharField(max_length=5,null=True, blank = True)
@@ -78,6 +79,31 @@ class UserResumes(models.Model):
         print("done")
 
 
-
-
-
+class personality_insight(models.Model):
+    big5_openness = models.FloatField() 
+    big5_conscientiousness = models.FloatField() 
+    big5_Extraversion = models.FloatField() 
+    big5_Agreeableness = models.FloatField() 
+    big5_Emotional_range = models.FloatField() 
+    
+    needs_Challenge = models.FloatField() 
+    needs_Closeness = models.FloatField() 
+    needs_Curiosity = models.FloatField() 
+    needs_Excitement = models.FloatField() 
+    needs_Harmony = models.FloatField() 
+    needs_Ideal = models.FloatField() 
+    needs_Liberty = models.FloatField() 
+    needs_Love = models.FloatField() 
+    needs_Practicality = models.FloatField() 
+    needs_Self_expression = models.FloatField() 
+    needs_Stability = models.FloatField() 
+    
+    values_Openness_to_change = models.FloatField() 
+    values_Conservation = models.FloatField() 
+    values_Hedonism = models.FloatField() 
+    values_Self_enhancement = models.FloatField() 
+    values_Self_transcendence = models.FloatField() 
+    
+    class Meta:
+        db_table ="personality_insight"
+        print("done")
