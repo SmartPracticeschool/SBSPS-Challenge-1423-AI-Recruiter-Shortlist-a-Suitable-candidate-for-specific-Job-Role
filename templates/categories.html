@@ -37,11 +37,25 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form method="GET">
+
+                    {{myFilter.form}}
+                    <button class="btn btn-primary" type="submit"> 
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
     {% for i in  object%}
     <div style="margin-left:20px; margin-top:20px;" class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 style="font-weight:500; font-size: 25px; text-shadow: 1px 1px black;" class="card-title">{{i.job_title}}</h5>
-            <h6 style="font-weight:500; font-size: 20px;" class="card-subtitle mb-2 text-muted">{{i.location}} <hr /></h6>
+            <h6 style="font-weight:500; font-size: 20px;" class="card-subtitle mb-2 text-muted">{{i.company_name}} <hr /></h6>
+            <h6 style="font-weight:500; font-size: 20px;" class="card-subtitle mb-2 text-muted">{{i.location}}</h6>
             <h6 style="font-weight:500; font-size: 15px;" class="card-subtitle mb-2 text-muted">{{i.job_type}}</h6>
             <a href="User_Signup" class="card-link">Apply</a>
         </div>

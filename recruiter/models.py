@@ -1,6 +1,12 @@
 from django.db import models
 
+
+
 # Create your models here.
+class jobs(models.Model):
+    job_title = models.CharField(max_length=25,default="")
+
+
 class UserInsert(models.Model):
     FirstName = models.CharField(max_length=100,default="")
     LastName = models.CharField(max_length=100,default="")

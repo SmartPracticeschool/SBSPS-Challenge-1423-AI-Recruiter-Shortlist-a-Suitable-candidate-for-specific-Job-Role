@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from django.template import RequestContext
+<<<<<<< HEAD
 from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert,personality_insight
+=======
+from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert, jobs
+>>>>>>> 60c9509f206590e9a93b81973ef5fe9556ef816c
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from watson_developer_cloud import PersonalityInsightsV3
@@ -8,14 +12,21 @@ import pandas as pd
 import smtplib
 import os
 from email.message import EmailMessage
+from .filters import JobsFilter
+from .filters import SkillsFilter
+
+
+
 user_id = os.environ.get("MAIL_ID")
 password = os.environ.get('MAIL_PASS')
 # Create your views here.
 
 def home(request):
+   
     return render(request,'home.html')
 
 def postjob(request):
+     all_jobs = jobs.objects.all()
      if request.method=='POST' and 'postjob' in request.POST:
         job_title=request.POST["job_title"]
         company_name=request.POST["company_name"]
@@ -28,7 +39,7 @@ def postjob(request):
         data.save()
         return redirect("/postjob")
      else:
-        return render(request,'form.html')
+        return render(request,'form.html',{'joblist' : all_jobs})
 
 def demo(request):
      if request.method=='POST' and 'demo' in request.POST:
@@ -46,7 +57,11 @@ def demo(request):
 
 def candidate(request):
     obj=UserResumes.objects.all()
-    content={"object":obj}
+
+    myFilter = SkillsFilter(request.GET, queryset=obj)
+    obj = myFilter.qs
+
+    content={"object":obj, 'myFilter' : myFilter}
     return render(request,'candidate.html',content)
 
 
@@ -60,7 +75,11 @@ def sentinvite(request,name):
 
 def category(request):
     obj=JobInsert.objects.all()
-    content={"object":obj}
+
+    myFilter = JobsFilter(request.GET, queryset=obj)
+    obj = myFilter.qs
+
+    content={"object":obj, 'myFilter' : myFilter}
     return render(request,'categories.html',content)
 
 

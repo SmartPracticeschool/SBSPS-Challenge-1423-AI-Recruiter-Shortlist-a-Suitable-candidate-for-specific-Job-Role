@@ -59,8 +59,27 @@
                         {% csrf_token %}
                         <div class="row form-group">
                             <div class="col-md-12 mb-3 mb-md-0">
-                                <label class="font-weight-bold" for="fullname">Job Title</label>
-                                <input type="text" id="fullname" name="job_title" class="form-control" placeholder="eg. Full Stack Frontend" required>
+                                <label class=" font-weight-bold" for="fullname">Job Title</label>
+                                <select class = "form-control" id ="job_title">
+                                    <option value = "default">select job</option>
+                                    {% for job in joblist %}
+                                        <option value = "{{ job.id }}">{{ job.job_title }}</option>   
+                                    {% endfor %}                         
+                                </select>
+
+
+                                <!-- <div class="dropdown">
+                                    <button class="form-control dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                       {% for job in joblist %}
+                                           <a class="dropdown-item" href="#">{{ job.job_title }}</a>
+                                       {% endfor %} 
+                                                                            
+                                    </div>
+                                  </div> -->
+                                <!-- <input type="text" id="fullname" name="job_title" class="form-control" placeholder="Select A Job" required> -->
                             </div>
                         </div>
 
