@@ -12,4 +12,7 @@ class SkillsFilter(django_filters.FilterSet):
     class Meta:
         model = UserResumes
 
-        fields = ['skills','experience_in_year']
+        fields = {
+            'skills' : ['icontains'],
+            'experience_in_year' : ['icontains']
+        }

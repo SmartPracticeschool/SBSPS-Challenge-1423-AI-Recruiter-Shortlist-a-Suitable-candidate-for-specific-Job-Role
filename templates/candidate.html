@@ -5,7 +5,8 @@
     <title>Applicant Info</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+ 
+    <meta content="" name="description">
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Work+Sans:300,400,700" rel="stylesheet">
     <!-- Favicons -->
     <link href="{% static 'img/1.png' %}" rel="icon">
@@ -22,7 +23,7 @@
     <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <!-- Font Awesome CDN -->
-    <script src="https://kit.fontawesome.com/43528f0353.js"></script>
+    
 </head>
 <body>
 
@@ -30,8 +31,7 @@
         background-color: #2b3032a1;
         background-blend-mode: multiply;
         background-size: cover;
-        background-image: url('{% static '/images/form-back1.jpg'%}');
-    ">
+        background-image: url('{% static '/images/form-back1.jpg'%}');">
         <div class="container text-center">
             <h2 style="color:white; text-shadow:1px 1px black" class="mb-0">Applicants Information</h2>
             <p class="mb-0 unit-6"><a style="color:white;" href="/home">Home</a> <span style="color:black;" class="sep">></span> <span style="color:white;">Applicants Information</span></p>
@@ -56,7 +56,8 @@
     <div style="margin-left:20px; margin-top:20px;" class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 style="font-weight:500; font-size: 25px; text-shadow: 1px 1px black;" class="card-title">{{i.Name}}  </h5>
-            <h6 style="font-weight:500; font-size: 15px;" class="card-subtitle mb-2 text-muted">{{i.email}} <hr /></h6>
+            <h6 style="font-weight:500; font-size: 15px;" class="card-subtitle mb-2 text-muted">{{i.email}} </h6>
+            <h6 style="font-weight:500; font-size: 15px; margin-top: 5px;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Years Of Experience :</span> {{i.experience_in_year}} <hr /></h6>
             <h6 style="font-weight:500; font-size: 15px; text-align:justify;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Skills :</span>  {{i.skills}}</h6>
             <a href="{% url 'Dashboard' Resume_ID=i.Resume_ID %}" class="card-link">Go To Dashboard</a>
             <a href="{% url 'invitation' name=i.Name%}" class="card-link">Sent Invitation</a>
@@ -126,12 +127,13 @@
         <script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
         <script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
         <script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
-
+       
         <!-- Contact Form JavaScript File -->
         <script src="{% static 'contactform.js' %}"></script>
 
         <script src="{% static 'js/home.js' %}"></script>
 
+        <script src="https://kit.fontawesome.com/43528f0353.js"></script>
 
 
 </body>
