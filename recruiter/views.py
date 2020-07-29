@@ -1,10 +1,6 @@
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-<<<<<<< HEAD
-from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert,personality_insight
-=======
-from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert, jobs
->>>>>>> 60c9509f206590e9a93b81973ef5fe9556ef816c
+from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert,personality_insight,jobs
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from watson_developer_cloud import PersonalityInsightsV3
