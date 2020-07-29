@@ -39,7 +39,19 @@
 
 
     </div>
-    
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                <form method="GET">
+
+                    {{myFilter.form}}
+                    <button class="btn btn-primary" type="submit"> 
+                        Search
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
     {% for i in  object %}
     <div style="margin-left:20px; margin-top:20px;" class="card" style="width: 18rem;">
         <div class="card-body">

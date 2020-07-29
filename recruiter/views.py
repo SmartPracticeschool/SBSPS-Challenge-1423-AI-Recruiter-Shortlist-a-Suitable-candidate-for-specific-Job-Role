@@ -12,6 +12,11 @@ import pandas as pd
 import smtplib
 import os
 from email.message import EmailMessage
+from .filters import JobsFilter
+from .filters import SkillsFilter
+
+
+
 user_id = os.environ.get("MAIL_ID")
 password = os.environ.get('MAIL_PASS')
 # Create your views here.
@@ -52,7 +57,11 @@ def demo(request):
 
 def candidate(request):
     obj=UserResumes.objects.all()
-    content={"object":obj}
+
+    myFilter = SkillsFilter(request.GET, queryset=obj)
+    obj = myFilter.qs
+
+    content={"object":obj, 'myFilter' : myFilter}
     return render(request,'candidate.html',content)
 
 
@@ -66,7 +75,11 @@ def sentinvite(request,name):
 
 def category(request):
     obj=JobInsert.objects.all()
-    content={"object":obj}
+
+    myFilter = JobsFilter(request.GET, queryset=obj)
+    obj = myFilter.qs
+
+    content={"object":obj, 'myFilter' : myFilter}
     return render(request,'categories.html',content)
 
 
