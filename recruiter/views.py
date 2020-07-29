@@ -1,13 +1,9 @@
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert
+from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert,personality_insight
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
-from cloudant.client import Cloudant
-from cloudant.error import CloudantException
-from cloudant.result import Result, ResultByKey
-from cloudant.query import Query
-from django.http import HttpResponse
+from watson_developer_cloud import PersonalityInsightsV3
 import pandas as pd
 import smtplib
 import os
@@ -120,71 +116,7 @@ def logout(request):
 
 
 def dashboard(request,Resume_ID):
-    obj = UserResumes.objects.get(Resume_ID=Resume_ID)
-    client = Cloudant.iam("7bb49e3e-e0c1-483c-ab22-f4e9df6c48e8-bluemix", "28sTEYEUQKZrioimA4m6UyRuddlySON3JpDZT_gCwFIK")
-    client.connect()
-    print(obj.email)
-    database_name = "all_data"
-    db = client.create_database(database_name)
-    query = Query(db, selector={ '_id': obj.email })
-    result = query()['docs']
-    d=pd.DataFrame(result[0])
-
-    per=d.loc['personality','per']
-    openness = (per[0]['raw_score']*100)
-    conscientiousness= per[1]['raw_score']*100
-    Extraversion = per[2]['raw_score']*100
-    Agreeableness = per[3]['raw_score']*100
-    Emotional_range = per[4]['raw_score']*100
-    
-    # NEEDS
-    needs =d.loc['needs','per']*100
-    Challenge = needs[0]['raw_score']*100
-    Closeness = needs[1]['raw_score']*100
-    Curiosity = needs[2]['raw_score']*100
-    Excitement = needs[3]['raw_score']*100
-    Harmony = needs[4]['raw_score']*100
-    Ideal = needs[5]['raw_score']*100
-    Liberty = needs[6]['raw_score']*100
-    Love = needs[7]['raw_score']*100
-    Practicality = needs[8]['raw_score']*100
-    Self_expression = needs[9]['raw_score']*100
-    Stability = needs[10]['raw_score']*100
-    Structure = needs[11]['raw_score']*100
-
-    # value
-    values = d.loc['values','per']*100
-    Openness_to_change = values[0]['raw_score']*100
-    Conservation = values[1]['raw_score']*100
-    Hedonism = values[2]['raw_score']*100
-    Self_enhancement = values[3]['raw_score']*100
-    Self_transcendence = values[4]['raw_score']*100
-    conten={
-    'openness' :openness,
-    'conscientiousness': conscientiousness,
-    'Extraversion' :Extraversion,
-    'Agreeableness' : Agreeableness,
-    'Emotional_range' : Emotional_range,
-    'Challenge':Challenge,
-    'Closeness':Closeness,
-    'Curiosity':Curiosity,
-    'Excitement':Excitement,
-    'Harmony':Harmony,
-    'Ideal':Ideal,
-    'Liberty':Liberty,
-    'Love':Love,
-    'Practicality':Practicality,
-    'Self_expression':Self_expression,
-    'Stability':Stability,
-    'Structure':Structure,
-    'Openness_to_change':Openness_to_change,
-    'Conservation':Conservation,
-    'Hedonism':Hedonism,
-    'Self_enhancement':Self_enhancement,
-    'Self_transcendence':Self_transcendence,
-
-    }
-    return  render(request,'dashboard.html',conten)
+    return render(request,'dashboard.html')
     
 
 def invitation_mail(user_id, password, candidate_ID, candidate_name):
@@ -204,3 +136,55 @@ def invitation_mail(user_id, password, candidate_ID, candidate_name):
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
         smtp.login(user_id, password)
         smtp.send_message(msg)
+
+def personality(request):
+    ans1=request.POST['q1']
+    ans2=request.POST['q2']
+    ans3=request.POST['q3']
+    ans4=request.POST['q4']
+    ans5=request.POST['q5']
+    main=ans1+ans2+ans3+ans4+ans5
+    url1='https://api.us-south.personality-insights.watson.cloud.ibm.com/instances/9574b8b2-ae37-45f2-8b6c-9a5149a67228'
+    api_key='C9bFYuFypNRKdtVzCL8JoqURJ4501MSrzDBBvi82_AgV'
+    version='6-14-2020'
+    service=PersonalityInsightsV3(url=url1,iam_apikey=api_key,version=version)
+    profile=service.profile(main,content_type='text/plain').get_result()
+    per=pd.DataFrame(profile['personality'])
+   
+    big5_openness = (per.loc[0]['percentile']*100)
+    big5_conscientiousness = (per.loc[1]['percentile']*100)
+    big5_Extraversion = (per.loc[2]['percentile']*100)
+    big5_Agreeableness = (per.loc[3]['percentile']*100)
+    big5_Emotional_range =( per.loc[4]['percentile']*100)
+    
+    # NEEDS
+    needs =pd.DataFrame(profile['needs'])
+    needs_Challenge = (needs.loc[0]['percentile']*100)
+    needs_Closeness = (needs.loc[1]['percentile']*100)
+    needs_Curiosity = (needs.loc[2]['percentile']*100)
+    needs_Excitement = (needs.loc[3]['percentile']*100)
+    needs_Harmony = (needs.loc[4]['percentile']*100)
+    needs_Ideal = (needs.loc[5]['percentile']*100)
+    needs_Liberty = (needs.loc[6]['percentile']*100)
+    needs_Love = (needs.loc[7]['percentile']*100)
+    needs_Practicality = (needs.loc[8]['percentile']*100)
+    needs_Self_expression = (needs.loc[9]['percentile']*100)
+    needs_Stability = (needs.loc[10]['percentile']*100)
+    needs_Structure = (needs.loc[11]['percentile']*100)
+
+	    # value
+    values=pd.DataFrame(profile['values'])
+    values_Openness_to_change = (values.loc[0]['percentile']*100)
+    values_Conservation = (values.loc[1]['percentile']*100)
+    values_Hedonism =( values.loc[2]['percentile']*100)
+    values_Self_enhancement = (values.loc[3]['percentile']*100)
+    values_Self_transcendence = (values.loc[4]['percentile']*100)
+   
+   
+    person=personality_insight(big5_openness=big5_openness,big5_conscientiousness=big5_conscientiousness,big5_Extraversion=big5_Extraversion,
+    big5_Agreeableness=big5_Agreeableness,big5_Emotional_range=big5_Emotional_range,needs_Challenge=needs_Challenge,
+    needs_Closeness=needs_Closeness,needs_Curiosity=needs_Curiosity,needs_Excitement=needs_Excitement,needs_Harmony=needs_Harmony,needs_Ideal=needs_Ideal,needs_Liberty=needs_Liberty,
+    needs_Love=needs_Love,needs_Practicality=needs_Practicality,needs_Self_expression=needs_Self_expression,needs_Stability=needs_Stability,
+    values_Conservation=values_Conservation,values_Hedonism=values_Hedonism,values_Openness_to_change=values_Openness_to_change,values_Self_enhancement=values_Self_enhancement,values_Self_transcendence=values_Self_transcendence)
+    person.save()
+    return render(request,"home.html")
