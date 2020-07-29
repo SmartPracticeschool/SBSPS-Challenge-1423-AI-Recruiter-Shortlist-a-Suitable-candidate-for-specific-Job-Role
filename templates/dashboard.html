@@ -24,8 +24,19 @@
     <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
     <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-
+    
     <style>
+        
+        #chartContainer4, #chartContainer1, #chartContainer2{
+            padding-left: 60px;
+        
+        }
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+        }
+
+        
         canvas {
             -moz-user-select: none;
             -webkit-user-select: none;
@@ -36,8 +47,7 @@
 </head>
 <body>
 
-    <div class="unit-5 overlay" style="
-        background-color: #2b3032a1;
+    <div class="unit-5 overlay" style="        background-color: #2b3032a1;
         background-blend-mode: multiply;
         background-size: cover;
         background-image: url('{% static '/images/form-back1.jpg'%}');">
@@ -46,10 +56,63 @@
             <p class="mb-0 unit-6"><a style="color:white;" href="/home">Home</a> <span style="color:black;" class="sep">></span> <span style="color:white;">Dashboard</span></p>
         </div>
     </div>
+    <div class="container text-center">
+        <h2 style="font-weight: bold; border: inherit;
+        color: #2b3032a1;"
+            class="mb-0">
+            Applicant's Skills and Qualifications
+        </h2>
+    </div>
+
+    <!-- Resources -->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <!-- Chart code -->
+    <script>
+        am4core.ready(function () {
+
+            // Themes begin
+            am4core.useTheme(am4themes_animated);
+            // Themes end
+
+            var chart = am4core.create("chartdiv", am4plugins_wordCloud.WordCloud);
+            var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+
+            series.accuracy = 4;
+            series.step = 15;
+            series.rotationThreshold = 0.7;
+            series.maxCount = 200;
+            series.minWordLength = 2;
+            series.labels.template.margin(4, 4, 4, 4);
+            series.maxFontSize = am4core.percent(30);
+
+            series.text = "{{skills}}";
+
+            series.colors = new am4core.ColorSet();
+            series.colors.passOptions = {}; // makes it loop
+
+            //series.labelsContainer.rotation = 45;
+            series.angles = [0, -90];
+            series.fontWeight = "700"
+
+            setInterval(function () {
+                series.dataItems.getIndex(Math.round(Math.random() * (series.dataItems.length - 1))).setValue("value", Math.round(Math.random() * 10));
+            }, 10000)
+
+        }); // end am4core.ready()
+    </script>
+
+    <!-- HTML -->
+    <div id="chartdiv"></div>
+    <hr style=" border: 2px solid grey; border-radius: 2px;" >
     <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <div id="chartContainer4" style="width: 45%; height: 300px;display: inline-block;"></div>
-    <div id="chartContainer1" style="width: 45%; height: 300px;display: inline-block;"></div>
-    <div id="chartContainer2" style="width: 45%; height: 300px;display: inline-block;"></div>
+    
+    <div id="chartContainer1" style=" width: 70%; height: 400px; display: inline-block;"></div>
+    <div id="chartContainer4" style="width: 70%; height: 400px;display: inline-block;"></div>
+    <div id="chartContainer2" style=" width: 70%; height: 400px; display: inline-block;"></div>
 
     <script>
 
@@ -68,7 +131,7 @@
 
                         legendMarkerType: "triangle",
                         legendMarkerColor: "green",
-                        color: "rgba(255,12,32,.3)",
+                        color: "#741de4",
                         showInLegend: true,
                         legendText: "Big 5",
                         dataPoints: [
@@ -98,7 +161,7 @@
 
                         legendMarkerType: "triangle",
                         legendMarkerColor: "green",
-                        color: "rgba(255,12,32,.3)",
+                        color: "#741de4",
                         showInLegend: true,
                         legendText: "Needs",
                         dataPoints: [
@@ -135,7 +198,7 @@
 
                         legendMarkerType: "triangle",
                         legendMarkerColor: "green",
-                        color: "rgba(255,12,32,.3)",
+                        color: "#741de4",
                         showInLegend: true,
                         legendText: "Values",
                         dataPoints: [
