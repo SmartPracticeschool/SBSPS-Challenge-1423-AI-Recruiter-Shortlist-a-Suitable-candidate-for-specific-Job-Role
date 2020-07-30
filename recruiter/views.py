@@ -143,11 +143,11 @@ def dashboard(request):
     
     content={
         'skills':obj1.skills,
-        'openess':round(obj.big5_openness),
-        'conscientiousness':round(obj.big5_conscientiousness),
-        'Extraversion':round(obj.big5_Extraversion),
-        'Agreeableness':round(obj.big5_Agreeableness),
-        'Emotional_range':round(obj.big5_Emotional_range),
+        'openness':obj.big5_openness,
+        'conscientiousness':obj.big5_conscientiousness,
+        'Extraversion':obj.big5_Extraversion,
+        'Agreeableness':obj.big5_Agreeableness,
+        'Emotional_range':obj.big5_Emotional_range,
 
         'Challenge':obj.needs_Challenge,
         'Closeness':obj.needs_Closeness,
@@ -168,7 +168,7 @@ def dashboard(request):
         'Self_enhancement':obj.values_Self_enhancement,
         'Self_transcendence':obj.values_Self_transcendence
     }
-
+    print(content.keys())
     return render(request,'dashboard.html',content)
     
 
