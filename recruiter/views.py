@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.template import RequestContext
 
+
 from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert,personality_insight,jobs
+
 
 
 from django.contrib import messages
