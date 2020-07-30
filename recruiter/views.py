@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-<<<<<<< HEAD
-from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert,personality_insight
-=======
-from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert, jobs
->>>>>>> 60c9509f206590e9a93b81973ef5fe9556ef816c
+
+from recruiter.models import  UserInsert, CompanyInsert, UserResumes, JobInsert,personality_insight,jobs
+
+
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from watson_developer_cloud import PersonalityInsightsV3
@@ -65,8 +64,9 @@ def candidate(request):
     return render(request,'candidate.html',content)
 
 
-def sentinvite(request,name):
-    obj = UserResumes.objects.get(Name=name)
+def sentinvite(request):
+    Resume_ID=request.POST['email']
+    obj = UserResumes.objects.get(Resume_ID=Resume_ID)
     invitation_mail(user_id,password,obj.email,obj.Name)
     return  redirect('/viewdone')
 
@@ -134,8 +134,40 @@ def logout(request):
     return redirect("/home")
 
 
-def dashboard(request,Resume_ID):
-    return render(request,'dashboard.html')
+def dashboard(request):
+    Resume_ID=request.POST['dashboard']
+    obj = personality_insight.objects.get(id=Resume_ID)
+    obj1=UserResumes.objects.get(Resume_ID=Resume_ID)
+    
+    content={
+        'skills':obj1.skills,
+        'openess':round(obj.big5_openness),
+        'conscientiousness':round(obj.big5_conscientiousness),
+        'Extraversion':round(obj.big5_Extraversion),
+        'Agreeableness':round(obj.big5_Agreeableness),
+        'Emotional_range':round(obj.big5_Emotional_range),
+
+        'Challenge':obj.needs_Challenge,
+        'Closeness':obj.needs_Closeness,
+        'Curiosity':obj.needs_Curiosity,
+        'Excitement':obj.needs_Excitement,
+        'Harmony':obj.needs_Harmony,
+        'Ideal':obj.needs_Ideal,
+        'Liberty':obj.needs_Liberty,
+        'Love':obj.needs_Love,
+        'Practicality':obj.needs_Practicality,
+        'Self_expression':obj.needs_Self_expression,
+        'Stability':obj.needs_Stability,
+
+
+        'Openness_to_change':obj.values_Openness_to_change,
+        'Conservation':obj.values_Conservation,
+        'Hedonism':obj.values_Hedonism,
+        'Self_enhancement':obj.values_Self_enhancement,
+        'Self_transcendence':obj.values_Self_transcendence
+    }
+
+    return render(request,'dashboard.html',content)
     
 
 def invitation_mail(user_id, password, candidate_ID, candidate_name):

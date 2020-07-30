@@ -59,8 +59,19 @@
             <h6 style="font-weight:500; font-size: 15px;" class="card-subtitle mb-2 text-muted">{{i.email}} </h6>
             <h6 style="font-weight:500; font-size: 15px; margin-top: 5px;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Years Of Experience :</span> {{i.experience_in_year}} <hr /></h6>
             <h6 style="font-weight:500; font-size: 15px; text-align:justify;" class="card-subtitle mb-2 text-muted"><span style="font-size:18px; color:black;">Skills :</span>  {{i.skills}}</h6>
-            <a href="{% url 'Dashboard' Resume_ID=i.Resume_ID %}" class="card-link">Go To Dashboard</a>
-            <a href="{% url 'invitation' name=i.Name%}" class="card-link">Sent Invitation</a>
+            <form action="dashboard" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="dashboard" value="{{i.Resume_ID}}">
+            <input type="submit" class="submit_btn btn label-success" name='Dashboard' value='dashboard' />
+            </form>
+            <form action="email" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="email" value="{{i.Resume_ID}}">
+            <input type="submit" class="submit_btn btn label-success" name='Send Email'value="email" />
+            </form>
+            {% comment %} <a href="{% url 'Dashboard' Resume_ID=i.Resume_ID %}" class="card-link">Go To Dashboard</a>
+            <a href="{% url 'invitation' name=i.Name%}" class="card-link">Sent Invitation</a> {% endcomment %}
+            
         </div>
     </div>
     {% endfor %}    
