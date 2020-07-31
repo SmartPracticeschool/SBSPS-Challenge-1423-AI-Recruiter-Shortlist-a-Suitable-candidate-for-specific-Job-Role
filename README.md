@@ -114,4 +114,5 @@ http://127.0.0.1:8000/home
 - [Denish Vaghasia](https://github.com/D-e-n-i-s-h)
 - [Bhavyesh Bherwani](https://github.com/ShadyNicks)
 - [Ayush Saxena](https://github.com/itzzayushsaxena)
+- [Karmakar Sudip S.](https://github.com/VeNOM4171)
 
