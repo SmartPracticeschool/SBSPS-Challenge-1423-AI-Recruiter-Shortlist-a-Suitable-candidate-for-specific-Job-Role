@@ -1,0 +1,301 @@
+{
+  "intents": [
+    {
+      "intent": "greet",
+      "examples": [
+        {
+          "text": "hi"
+        },
+        {
+          "text": "hello"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "atrate",
+      "examples": [
+        {
+          "text": "@hotmail.com"
+        },
+        {
+          "text": "@yahoo.com"
+        },
+        {
+          "text": "@gmail.com"
+        },
+        {
+          "text": "@"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Question 3 : What would be your favorite part about working here?"
+              },
+              {
+                "text": "Question 3 : How can you help your team to achieve their goals? "
+              },
+              {
+                "text": "Question 3 : Why do you want to work for us or our company?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_10_1594105921146",
+      "conditions": "anything_else",
+      "dialog_node": "node_8_1594105983637"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Question 2 : Why did you decide to apply for this position?"
+              },
+              {
+                "text": "Question 2 : What do you think our company’s mission and vision are?"
+              },
+              {
+                "text": "Question 2 :Where do you see yourself after 5 years?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_10_1594105672788",
+      "conditions": "anything_else",
+      "dialog_node": "node_10_1594105921146"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Question 1 :  What do you do to achieve your professional goals?"
+              },
+              {
+                "text": "Question 1 : What do you think our company’s mission and vision are?"
+              },
+              {
+                "text": "Question 1 : In your experience, which benefits/perks drive the highest employee satisfaction and engagement?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_9_1594105379902",
+      "conditions": "anything_else",
+      "dialog_node": "node_10_1594105672788"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Question 5 : What's your ideal company?And why?"
+              },
+              {
+                "text": "Question 5 : Hypothetically, write a small pitch to present our company to a potential investor.(less than 50 words)"
+              },
+              {
+                "text": "Question 5 : Would you describe yourself as a perfectionist and why?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_4_1594106019844",
+      "conditions": "anything_else",
+      "dialog_node": "node_1_1594106048075"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you. Your data has been recorded. Now, CLICK ON  \"Go to Website\" ."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1594106048075",
+      "conditions": "anything_else",
+      "dialog_node": "node_8_1594106123661"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Question 4 : Do you think this position aligns with your professional goals? Please justify your answer."
+              },
+              {
+                "text": "Question 4 : What would getting this job mean to you? "
+              },
+              {
+                "text": "Question 4 : Which is the field in bussiness that our company has not dive into, but we should?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "parent": "node_8_1594105983637",
+      "conditions": "anything_else",
+      "dialog_node": "node_4_1594106019844"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thanks u for your email.  Please talk to me freely. "
+              },
+              {
+                "text": "Thanks u for your email. I will be asking you some general questions. Please talk to me freely."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "skip_user_input"
+      },
+      "conditions": "#atrate",
+      "dialog_node": "node_9_1594105379902",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Give me you email?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#greet",
+      "dialog_node": "Welcome",
+      "previous_sibling": "node_6_1594193286567"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_9_1594105379902",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "node_6_1594193286567"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "yo",
+  "language": "en",
+  "description": ""
+}
