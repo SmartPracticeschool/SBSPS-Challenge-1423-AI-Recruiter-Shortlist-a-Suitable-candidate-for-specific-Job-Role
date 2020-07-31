@@ -74,7 +74,7 @@
         
        
         <div id="bg"></div>
-        <div style="display: flex; justify-content:center;">
+        <div class="time" style="display: flex; justify-content:center;">
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -126,6 +126,8 @@
             </section>
         </section>
         <!-- Login form creation ends -->
+
+        <script src="{% static 'js/timeout.js' %}"></script>
     </body>
 </html>
 
