@@ -70,6 +70,7 @@ def sentinvite(request):
     Resume_ID=request.POST['email']
     obj = UserResumes.objects.get(Resume_ID=Resume_ID)
     invitation_mail(user_id,password,obj.email,obj.Name)
+    messages.success(request,'User Registration Successful.')
     return  redirect('/viewdone')
 
    

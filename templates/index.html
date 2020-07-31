@@ -44,7 +44,7 @@
 
     <div class="container-contact100">
 
-        <div class="form-group">
+        <div style="display: flex; justify-content:center;">
             {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -86,13 +86,13 @@
 
                 <label class="label-input100" for="email">Enter your email *</label>
                 <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-                    <input id="email" class="input100" type="text" name="email" placeholder="Eg. example@email.com" required>
+                    <input id="email" class="input100" type="email" name="email" placeholder="Eg. example@email.com" required>
                     <span class="focus-input100"></span>
                 </div>
 
                 <label class="label-input100" for="phone">Enter phone number</label>
                 <div class="wrap-input100">
-                    <input id="phone" class="input100" type="text" name="phone_number" placeholder="Eg. +1 800 000000" required>
+                    <input id="phone" class="input100" type="text" name="phone_number" pattern="[0-9]{10}" placeholder="Enter 10 digits" required>
                     <span class="focus-input100"></span>
                 </div>
 
@@ -113,13 +113,7 @@
                     <input id="Password" class="input100" type="password" name="password2" placeholder="Enter password again" required>
                     <span class="focus-input100"></span>
                 </div>
-                <div style=" margin-left:75px;  font-size:20px; font-family:'Times New Roman', Times, serif">
-                    {% if messages %}
-                    {% for message in messages %}
-                    <h2 style="color:red">{{message}}</h2>
-                    {% endfor %}
-                    {% endif %}
-                </div>
+                
 
                 <div class="container-contact100-form-btn">
                     <button type="submit" class="contact100-form-btn" name="company">
