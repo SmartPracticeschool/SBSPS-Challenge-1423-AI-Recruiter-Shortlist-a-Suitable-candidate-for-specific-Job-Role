@@ -22,7 +22,7 @@ Google drive Link.
 * [Google drive link](https://drive.google.com/file/d/1ADkJcDWY4qxVoNouJTNgzqsNQd2Q2L5p/view?usp=sharing) 
 
 If you have any issues with the google drive link you can also visit the video on youtube.
-* [Youtube Link](https://youtu.be/UkCWcOmISpY)
+* [Youtube Link](https://www.youtube.com/)
 
 
 # Setting up and running the app on your machine:
