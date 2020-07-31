@@ -70,7 +70,7 @@ def sentinvite(request):
     Resume_ID=request.POST['email']
     obj = UserResumes.objects.get(Resume_ID=Resume_ID)
     invitation_mail(user_id,password,obj.email,obj.Name)
-    messages.success(request,'User Registration Successful.')
+    messages.success(request,'Email Sent Successful.')
     return  redirect('/viewdone')
 
    
@@ -234,7 +234,11 @@ def personality(request):
     values_Self_enhancement = (values.loc[3]['percentile']*100)
     values_Self_transcendence = (values.loc[4]['percentile']*100)
    
-   
+    # avg = (big5_openness + big5_conscientiousness + big5_Extraversion + big5_Agreeableness + big5_Emotional_range + needs_Challenge +
+    #  needs_Closeness + needs_Curiosity + needs_Excitement + needs_Harmony + needs_Ideal + needs_Liberty +
+    # needs_Love + needs_Practicality + needs_Self_expression + needs_Stability +
+    # values_Conservation + values_Hedonism + values_Openness_to_change + values_Self_enhancement + values_Self_transcendence)/22
+    # print(avg)
     person=personality_insight(big5_openness=big5_openness,big5_conscientiousness=big5_conscientiousness,big5_Extraversion=big5_Extraversion,
     big5_Agreeableness=big5_Agreeableness,big5_Emotional_range=big5_Emotional_range,needs_Challenge=needs_Challenge,
     needs_Closeness=needs_Closeness,needs_Curiosity=needs_Curiosity,needs_Excitement=needs_Excitement,needs_Harmony=needs_Harmony,needs_Ideal=needs_Ideal,needs_Liberty=needs_Liberty,
