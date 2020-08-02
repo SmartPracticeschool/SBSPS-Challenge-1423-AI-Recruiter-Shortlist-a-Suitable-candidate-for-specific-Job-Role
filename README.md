@@ -19,10 +19,10 @@
 # Video of working model:
 
 Google drive Link.
-* [Google drive link](https://www.google.com/) 
+* [Google drive link](https://drive.google.com/file/d/1HVjVFV3c3g7KBR9hHAb72QLzUCBdwo6f/view?usp=sharing) 
 
 If you have any issues with the google drive link you can also visit the video on youtube.
-* [Youtube Link](https://www.youtube.com/)
+* [Youtube Link](https://www.youtube.com/watch?v=TVq61oLK3Mo)
 
 
 # Setting up and running the app on your machine:
