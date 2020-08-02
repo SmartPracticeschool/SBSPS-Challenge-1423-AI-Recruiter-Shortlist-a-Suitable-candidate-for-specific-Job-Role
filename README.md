@@ -80,7 +80,7 @@ Clone or download the repository:
 
 1. Login to your GitHub account or create one by following the instructions given
    [here](https://github.com/signup/free).
-2. Download the repoository from [here](https://github.com/SmartPracticeschool/SBSPS-Challenge-1423-AI-Recruiter-Shortlist-a-Suitable-candidate-for-specific-Job-Role)
+2. Download the repository from [here](https://github.com/SmartPracticeschool/SBSPS-Challenge-1423-AI-Recruiter-Shortlist-a-Suitable-candidate-for-specific-Job-Role)
 3. Open xampp-control.exe from your Xampp. And click on start button of MySql and Apache. After click on admin button. 
 4. Create Database on phpMyAdmin with name as 'molly'.
 
