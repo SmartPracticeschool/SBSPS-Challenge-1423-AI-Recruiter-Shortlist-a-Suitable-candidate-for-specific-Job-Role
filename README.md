@@ -17,12 +17,8 @@
 </p>
 
 # Video of working model:
-
-Google drive Link.
-* [Google drive link](https://www.google.com/) 
-
-If you have any issues with the google drive link you can also visit the video on youtube.
-* [Youtube Link](https://www.youtube.com/)
+You can checkout our youtube video.
+* [Youtube Link](https://www.youtube.com/watch?v=TVq61oLK3Mo)
 
 
 # Setting up and running the app on your machine:
