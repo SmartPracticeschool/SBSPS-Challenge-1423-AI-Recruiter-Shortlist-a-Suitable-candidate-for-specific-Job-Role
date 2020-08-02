@@ -105,9 +105,9 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-## Goto home page 
+## Open the browser to view the project 
 ```shell
-#Goto home page to open it
+#Enter the below address to see home page
 http://127.0.0.1:8000/home
 #ENJOY!
 ```
