@@ -19,10 +19,10 @@
 # Video of working model:
 
 Google drive Link.
-* [Google drive link](https://drive.google.com/file/d/1HVjVFV3c3g7KBR9hHAb72QLzUCBdwo6f/view?usp=sharing) 
+* [Google drive link](https://www.google.com/) 
 
 If you have any issues with the google drive link you can also visit the video on youtube.
-* [Youtube Link](https://www.youtube.com/watch?v=TVq61oLK3Mo)
+* [Youtube Link](https://www.youtube.com/)
 
 
 # Setting up and running the app on your machine:
@@ -59,17 +59,25 @@ pip install pandas
 # Install mysql client through commond line.
 pip install mysqlclient
 ```
-* [Cloudant](https://www.ibm.com/in-en/cloud/cloudant)
+* [watson_developer_cloud](https://pypi.org/project/watson-developer-cloud/)
 ```shell
-# Install cloudant through commond line.
-pip install cloudant
+# Install watson_developer_cloud through commond line.
+pip install watson_developer_cloud
 ```
 * [pyresparser](https://pypi.org/project/pyresparser/)
 ```shell
 # Install pyresparser through commond line.
 pip install pyresparser
 ```
-
+For NLP operations we use spacy and nltk. Install them using below commands:
+```shell
+# spaCy
+python -m spacy download en_core_web_sm
+```
+```shell
+python -m nltk.downloader words
+python -m nltk.downloader stopwords
+```
 ## Setting up the Sources:
 
 Clone or download the repository:
@@ -103,7 +111,7 @@ python manage.py runserver
 
 ## Goto home page 
 ```shell
-#Goto web browsesr and open home page
+#Goto home page to open it
 http://127.0.0.1:8000/home
 #ENJOY!
 ```
