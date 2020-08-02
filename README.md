@@ -103,7 +103,7 @@ python manage.py runserver
 
 ## Goto home page 
 ```shell
-#Goto home page to open it
+#Goto web browsesr and open home page
 http://127.0.0.1:8000/home
 #ENJOY!
 ```
