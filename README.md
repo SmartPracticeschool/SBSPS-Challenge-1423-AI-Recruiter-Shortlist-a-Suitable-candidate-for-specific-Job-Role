@@ -19,6 +19,7 @@
 # Video of working model:
 You can checkout our youtube video.
 * [Youtube Link](https://www.youtube.com/watch?v=TVq61oLK3Mo)
+* [Google drive link](https://drive.google.com/file/d/1HVjVFV3c3g7KBR9hHAb72QLzUCBdwo6f/view?usp=sharing) 
 
 
 # Setting up and running the app on your machine:
