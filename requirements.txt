@@ -9,7 +9,7 @@ click==7.1.2
 cloudant==2.13.0
 cryptography==3.0
 cymem==2.0.3
-Django==3.0.8
+Django==3.1.6
 django-filter==2.3.0
 djangorestframework==3.11.0
 docx2txt==0.8
