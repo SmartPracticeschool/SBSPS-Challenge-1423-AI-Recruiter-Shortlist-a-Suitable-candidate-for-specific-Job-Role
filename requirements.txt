@@ -41,7 +41,7 @@ sqlparse==0.3.1
 srsly==2.2.0
 thinc==7.4.1
 tqdm==4.48.0
-urllib3==1.25.10
+urllib3==1.26.5
 wasabi==0.7.1
 watson-developer-cloud==2.10.1
 websocket-client==0.48.0
