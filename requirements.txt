@@ -21,7 +21,7 @@ Markdown==3.2.2
 murmurhash==1.0.2
 mysqlclient==2.0.1
 nltk==3.5
-numpy==1.19.1
+numpy==1.22.0
 pandas==1.0.5
 pdfminer.six==20200726
 plac==1.1.3
